@@ -10,7 +10,7 @@ function play() {
 
     while (game) { 
 
-        const you = Number(prompt("pick 1 for rock, 2 for paper or 3 for scissors: "));
+        const you = Number(prompt("pick 1 for paper, 2 for rock or 3 for scissors: "));
 
         const comp = (Math.floor(Math.random()*3) +1);
 
