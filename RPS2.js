@@ -1,1 +1,0 @@
-const { rockPaperScissors } = require("./RPS");
