@@ -22,6 +22,7 @@ function playGame() {
         console.log(rockPaperScissors(user, computer))
 
         console.log(`You're score ${scoreUser}, Computer's score: ${scoreComputer}`)
+        
     }
 }
 
@@ -53,6 +54,7 @@ function rockPaperScissors(a, b) {
 
     } else if (a === b) {
         return color.blue("draw!");
+
     } else {
         return color.red("Error")
     }
