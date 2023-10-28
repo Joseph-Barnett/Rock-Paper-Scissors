@@ -1,48 +1,62 @@
+const color = require('ansi-colors')
 const ps = require("prompt-sync");
-const prompt = ps({sigint: true});
+const prompt = ps({ sigint: true });
 
-    let scoreYou = 0;
-    let scoreComputer = 0;
+let scoreUser = 0;
+let scoreComputer = 0;
 
-function play() {
+function playGame() {
 
     let game = true;
 
-    while (game) { 
+    while (game) {
 
-        const you = Number(prompt("pick 1 for paper, 2 for rock or 3 for scissors: "));
+        const user = Number(prompt("pick 1 for paper, 2 for rock or 3 for scissors: "));
 
-        const comp = (Math.floor(Math.random()*3) +1);
+        const computer = (Math.floor(Math.random() * 3) + 1);
 
-        console.log(`you ${you}`)
+        console.log(`you ${user}`)
 
-        console.log(`comp ${comp}`)
-}
+        console.log(`comp ${computer}`)
+
+        console.log(rockPaperScissors(user, computer))
+
+        console.log(`You're score ${scoreUser}, Computer's score: ${scoreComputer}`)
+    }
 }
 
 function rockPaperScissors(a, b) {
 
-    if (a === scissors && b === paper) {
-        return "You win" && scoreYou + 1;            // scissors v paper
+    if (a === 3 && b === 1) {
+        scoreUser += 1;
+        return color.green("You win!");
 
-    } else if (a === paper && b === scissors) {
-        return "Computer wins" && scoreComputer + 1; // paper v scissors
+    } else if (a === 1 && b === 3) {
+        scoreComputer += 1;
+        return color.red("Computer wins!");
 
-    } else if (a === scissors && b === rock) {
-        return "Computer wins" && scoreComputer + 1; // scissors v rock
+    } else if (a === 3 && b === 2) {
+        scoreComputer += 1;
+        return color.red("Computer wins!");
 
-    } else if (a === rock && b === scissors) {
-        return "You win" && scoreYou + 1;            // rock v scissors
+    } else if (a === 2 && b === 3) {
+        scoreUser += 1;
+        return color.green("You win!");
 
-    } else if (a === paper && b === rock) {
-        return "You win" && scoreYou + 1;            // paper v rock
+    } else if (a === 1 && b === 2) {
+        scoreUser += 1;
+        return color.green("You win!");
 
-    } else if (a === rock && b === paper) {
-        return "Computer wins" && scoreComputer + 1; // rock v paper
+    } else if (a === 2 && b === 1) {
+        scoreComputer += 1;
+        return color.red("Computer wins!");
 
     } else if (a === b) {
-        return "draw";
+        return color.blue("draw!");
+    } else {
+        return color.red("Error")
     }
 }
 
-play ()
+
+playGame()
