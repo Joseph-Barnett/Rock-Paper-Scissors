@@ -23,6 +23,9 @@ function playGame() {
 
         console.log(`You're score ${scoreUser}, Computer's score: ${scoreComputer}`)
         
+        if (user === 0 || user > 3) {
+            game = false;
+        }
     }
 }
 
@@ -55,8 +58,10 @@ function rockPaperScissors(a, b) {
     } else if (a === b) {
         return color.blue("draw!");
 
+    } else if (a === 0) {
+        return color.red("Goodbye")
     } else {
-        return color.red("Error")
+        return ("Please enter a valid number")
     }
 }
 
